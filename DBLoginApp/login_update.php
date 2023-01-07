@@ -1,13 +1,8 @@
+<?php include "condb.php"; ?>
+<?php include "qFunctions.php"; ?>
+
 <?php
-    include "condb.php";
-
-    $query = "SELECT * FROM users";
-
-    $result = mysqli_query($connection,$query);
-
-    if(!$result){
-        die('Query FAILED'.mysqli_error());
-    }
+    UpdateTable();
 ?>
 
 <!DOCTYPE html>
@@ -23,22 +18,26 @@
 <body>
 <div class="container">
         <div class="col-xs-6">
-            <form action="login.php" method="post">
+        <h1 class="text-center">Update</h1>
+
+            <form action="login_update.php" method="post">
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" name="username" class="form-control"> 
+                    <input type="text" value='<?php $username?>' name="username" class="form-control"> 
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" name="password" class="form-control"> 
+                    <input type="password" value='<?php $password?>' name="password" class="form-control"> 
                 </div>
 
                 <div class="form-control">
                     <select name="id" id="">
-                        <option value="">1</option>
+                        <?php       
+                        ShowAllData();
+?>   
                     </select>
                 </div>
-                <input class="btn btn-primary" type="submit" name="submit" value="Update">
+                <input class="btn btn-primary" type="submit" name="submit" value="UPDATE">
             </form>
         </div>
     </div>
