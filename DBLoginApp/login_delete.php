@@ -1,16 +1,11 @@
+<?php include "condb.php"; ?>
+<?php include "qFunctions.php"; ?>
 
 <?php
-
-global $connection;
-include "qFunctions.php";
-
-CreateRows();
-
-
+if(isset($_POST['submit'])){
+    DeleteRows();
+}
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,19 +18,28 @@ CreateRows();
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
+<div class="container">
         <div class="col-xs-6">
-            <h1 class="text-center">Create</h1>
-            <form action="login_create.php" method="post">
+        <h1 class="text-center">Delete</h1>
+
+            <form action="login_delete.php" method="post">
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" name="username" class="form-control"> 
+                    <input type="text" value='<?php $username?>' name="username" class="form-control"> 
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" name="password" class="form-control"> 
+                    <input type="password" value='<?php $password?>' name="password" class="form-control"> 
                 </div>
-                <input class="btn btn-primary" type="submit" name="submit" value="CREATE">
+
+                <div class="form-control">
+                    <select name="id" id="">
+                        <?php       
+                        ShowAllData();
+?>   
+                    </select>
+                </div>
+                <input class="btn btn-primary" type="submit" name="submit" value="DELETE">
             </form>
         </div>
     </div>
